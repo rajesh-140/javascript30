@@ -58,29 +58,36 @@
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
 <script>
+  //#10remove the transition e keybordevent
   function removeTransition(e) {
+    // #11Transformation functions can rotate, resize, 
     if (e.propertyName !== 'transform') return;
+    //#12after playing will remove the class
     e.target.classList.remove('playing');
   }
-  // function
+  // To key is pressedto the key bord
   function playSound(e) {
-    // selects the audio element where data-key="e.keyCode"
+    // #2selects the audio element where data-key="e.keyCode"
     const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
-    // will go in the playSound  function
+    //#3 select the div element where data-key="e.keycode"
     const key = document.querySelector(`div[data-key="${e.keyCode}"]`);
-    //if there is no audio element with the corresponding keyCode, then don't do anything
+    //#4if there is no audio element with the corresponding keyCode, then don't do anything
     if (!audio) return;
-     //else reset the audio time and play it
+     //#5div element  data-key we add the new class element
     key.classList.add('playing');
+    //#6audio will recyle start from 0
     audio.currentTime = 0;
+    //#7well go to play
     audio.play();
   }
-   //all keys
+   //#8array create to all keys
   const keys = Array.from(document.querySelectorAll('.key'));
-
+   //#9for each element will call the eventlistener transitionend  has completed. In the case where a transition
+   // is removed before completion transition-property is removed or display is set to none,
   keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+  //#1addeventlistener to press the keydown and go to play the sound
   window.addEventListener('keydown', playSound);
-     // addEventListener call the function
+    
 </script>
 
 
