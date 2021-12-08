@@ -64,16 +64,16 @@
   </style>
 
   <script>
-    //all inputs on this page like that array
+    // element all the matches in css selectors from a dom refereance to the controal inputs
     const inputs = document.querySelectorAll('.controls input');
-   //addEventListener call the function 
+   
     function handleUpdate() {
       const suffix = this.dataset.sizing || '';
       document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix);
     }
-
+    //	The event occurs when the content of a form element, the selection, or the checked state have changed
     inputs.forEach(input => input.addEventListener('change', handleUpdate));
-    //when the mouse is moveing and also update the value
+    //Attach an event handler to the document
     inputs.forEach(input => input.addEventListener('mousemove', handleUpdate));
   </script><!--script tag close-->
 
